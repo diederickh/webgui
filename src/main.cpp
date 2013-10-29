@@ -30,6 +30,9 @@ int main() {
   std::string msg = "this is a basic message.\n";
   unsigned int c = 0;
 
+  values.effect = 990.05;
+  values.amount = 991.05f;
+  values.rshift = 992.3499f;
 
   gui = new WebGUI();
   page = new WebGUI_Page("Grid distort effect");
@@ -44,7 +47,9 @@ int main() {
   gui->push_back(page);
   gui->start();
 
-
+  gui->save("test.xml");
+  gui->load("test.xml");
+  
   while(must_run) {
   
     /*

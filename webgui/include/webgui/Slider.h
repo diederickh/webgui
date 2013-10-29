@@ -37,6 +37,7 @@ class WebGUI_Slider : public WebGUI_Element {
  public:
   WebGUI_Slider(std::string title, T min, T max, T step, T& value);
   void setValue(T v);                                        /* Updates the value */
+  T getValue();                                              /* Get the value */
  private:
   void initialize(WebGUI_Slider<float>* slider);              /* Initializes the float slider */
   void initialize(WebGUI_Slider<int>* slider);                /* Initializes the integer slider */
@@ -73,6 +74,11 @@ void WebGUI_Slider<T>::initialize(WebGUI_Slider<int>* slider) {
 template<class T>
 void WebGUI_Slider<T>::setValue(T v) {
   value = v;
+}
+
+template<class T>
+T WebGUI_Slider<T>::getValue() {
+  return value;
 }
 
 #endif

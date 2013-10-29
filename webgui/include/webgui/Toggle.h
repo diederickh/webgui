@@ -31,12 +31,17 @@ class WebGUI_Toggle : public WebGUI_Element {
  public:
   WebGUI_Toggle(std::string title, bool& value);
   void setValue(bool v); /* Update the value */
+  bool getValue(); /* Return the value */
  public:
   bool value;
 };
 
 inline void WebGUI_Toggle::setValue(bool v) {
   value = v;
+}
+
+inline bool WebGUI_Toggle::getValue() {
+  return value;
 }
 
 #endif

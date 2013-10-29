@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <webgui/WebGUI.h>
 #include <webgui/Serializer.h>
+#include <webgui/Storage.h>
 
 // -------------------------------------------------------
 
@@ -302,7 +303,6 @@ bool WebGUI::start() {
   }
   
   json = serialize();
-  printf("%s\n", json.c_str());
 
   libwebsocket_protocols proto;
   proto.name = "webgui";
@@ -408,7 +408,27 @@ void WebGUI::removeTasks() {
   uv_mutex_unlock(&mutex);
 }
 
+bool WebGUI::save(std::string filepath) {
+  
+  if(!filepath.size()) {
+    printf("Error: no filepath given.\n");
+    return false;
+  }
 
+  WebGUI_Storage storage;
+  return storage.save(filepath, this);
+}
+
+bool WebGUI::load(std::string filepath) {
+
+  if(!filepath.size()) {
+    printf("Error: no filepath given.\n");
+    return false;
+  }
+
+  WebGUI_Storage storage;
+  return storage.load(filepath, this);
+}
 
 // ----------------------------------------------------------------------------
 

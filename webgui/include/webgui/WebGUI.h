@@ -75,6 +75,8 @@ class WebGUI : public WebGUI_Element {
   ~WebGUI();
   bool start();
   void stop();
+  bool save(std::string filepath);                      /* Save the current state to a file at the given location (full path) */
+  bool load(std::string filepath);                      /* Load the stored settings from the given filepath */
 
  private:
   void addTask(WebGUI_Task* t);                          /* Adds a task to the task queue that is handled in a separate thread */
